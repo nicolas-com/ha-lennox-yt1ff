@@ -1,0 +1,156 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "Thermopompe Lennox (YT1FF)",
+        "description": "Choisissez l'émetteur infrarouge (ex. l'entité « IR emitter » du hub SofaBaton X1S).",
+        "data": {
+          "name": "Nom",
+          "emitter": "Émetteur infrarouge",
+          "temperature_sensor": "Capteur de température ambiante (optionnel)"
+        }
+      }
+    },
+    "abort": {
+      "no_emitters": "Aucun émetteur infrarouge trouvé. Installez/activez l'intégration SofaBaton X (entité infrared.*_ir_emitter).",
+      "already_configured": "Ce nom est déjà utilisé."
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "data": {
+          "repeat_count": "Répétitions supplémentaires",
+          "temperature_sensor": "Capteur de température ambiante",
+          "ifeel_interval": "Intervalle d'envoi I feel (minutes)"
+        }
+      }
+    }
+  },
+  "entity": {
+    "climate": {
+      "lennox_yt1ff": {
+        "state_attributes": {
+          "swing_mode": {
+            "state": {
+              "off": "Volet arrêté",
+              "fixed_up": "Fixe haut",
+              "fixed_middle_up": "Fixe milieu-haut",
+              "fixed_middle": "Fixe milieu",
+              "fixed_middle_down": "Fixe milieu-bas",
+              "fixed_down": "Fixe bas",
+              "swing_down": "Balayage bas",
+              "swing_middle": "Balayage milieu",
+              "swing_up": "Balayage haut",
+              "swing_full": "Balayage complet"
+            }
+          }
+        }
+      }
+    },
+    "switch": {
+      "light": {
+        "name": "Voyant de l'unité"
+      },
+      "health": {
+        "name": "Health"
+      },
+      "xfan": {
+        "name": "X-Fan"
+      },
+      "turbo": {
+        "name": "Turbo"
+      },
+      "ifeel": {
+        "name": "I feel (température du capteur)"
+      }
+    },
+    "select": {
+      "display": {
+        "name": "Température affichée",
+        "state": {
+          "inside": "Intérieure",
+          "outside": "Extérieure",
+          "target": "Consigne",
+          "off": "Éteint"
+        }
+      }
+    }
+  },
+  "services": {
+    "generate_pronto": {
+      "name": "Générer un code Pronto",
+      "description": "Calcule le code Pronto d'un état donné sans l'envoyer (retourne la valeur).",
+      "fields": {
+        "power": {
+          "name": "Marche",
+          "description": "Marche"
+        },
+        "mode": {
+          "name": "Mode",
+          "description": "Mode"
+        },
+        "temperature": {
+          "name": "Température",
+          "description": "Température"
+        },
+        "fan": {
+          "name": "Ventilation",
+          "description": "Ventilation"
+        },
+        "swing": {
+          "name": "Volet",
+          "description": "Volet"
+        },
+        "xfan": {
+          "name": "X-Fan",
+          "description": "X-Fan"
+        },
+        "health": {
+          "name": "Health",
+          "description": "Health"
+        },
+        "light": {
+          "name": "Voyant",
+          "description": "Voyant"
+        },
+        "display": {
+          "name": "Affichage",
+          "description": "Affichage"
+        },
+        "turbo": {
+          "name": "Turbo",
+          "description": "Turbo"
+        },
+        "ifeel": {
+          "name": "I feel",
+          "description": "I feel"
+        },
+        "ambient_temperature": {
+          "name": "Température ambiante (I feel)",
+          "description": "°C"
+        }
+      }
+    },
+    "decode_pronto": {
+      "name": "Décoder un code Pronto",
+      "description": "Décode un code Pronto de la YT1FF et indique si le générateur le reproduit à l'identique.",
+      "fields": {
+        "pronto": {
+          "name": "Code Pronto",
+          "description": "Code Pronto (0000 006C …)"
+        }
+      }
+    },
+    "send_pronto": {
+      "name": "Envoyer un code Pronto",
+      "description": "Envoie tel quel un code Pronto par l'émetteur configuré (diagnostic).",
+      "fields": {
+        "pronto": {
+          "name": "Code Pronto",
+          "description": "Code Pronto (0000 006C …)"
+        }
+      }
+    }
+  }
+}

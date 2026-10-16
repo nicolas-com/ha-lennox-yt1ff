@@ -1,0 +1,75 @@
+generate_pronto:
+  fields:
+    power:
+      default: true
+      selector:
+        boolean:
+    mode:
+      default: cool
+      selector:
+        select:
+          options: [auto, cool, dry, fan, heat]
+    temperature:
+      default: 24
+      selector:
+        number:
+          min: 16
+          max: 30
+          step: 1
+          mode: box
+    fan:
+      default: auto
+      selector:
+        select:
+          options: [auto, low, medium, high]
+    swing:
+      default: "off"
+      selector:
+        select:
+          options: ["off", fixed_up, fixed_middle_up, fixed_middle, fixed_middle_down, fixed_down, swing_down, swing_middle, swing_up, swing_full]
+    xfan:
+      selector:
+        boolean:
+    turbo:
+      default: false
+      selector:
+        boolean:
+    health:
+      default: true
+      selector:
+        boolean:
+    light:
+      default: true
+      selector:
+        boolean:
+    ifeel:
+      default: false
+      selector:
+        boolean:
+    ambient_temperature:
+      selector:
+        number:
+          min: 8
+          max: 40
+          step: 0.5
+          mode: box
+    display:
+      default: inside
+      selector:
+        select:
+          options: [inside, outside, target, "off"]
+
+decode_pronto:
+  fields:
+    pronto:
+      required: true
+      selector:
+        text:
+          multiline: true
+send_pronto:
+  fields:
+    pronto:
+      required: true
+      selector:
+        text:
+          multiline: true

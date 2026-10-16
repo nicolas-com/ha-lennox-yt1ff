@@ -1,0 +1,156 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "Lennox heat pump (YT1FF)",
+        "description": "Pick the infrared emitter (e.g. the SofaBaton X1S « IR emitter » entity).",
+        "data": {
+          "name": "Name",
+          "emitter": "Infrared emitter",
+          "temperature_sensor": "Room temperature sensor (optional)"
+        }
+      }
+    },
+    "abort": {
+      "no_emitters": "No infrared emitter found. Set up the SofaBaton X integration (infrared.*_ir_emitter entity).",
+      "already_configured": "This name is already used."
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "data": {
+          "repeat_count": "Extra repeats",
+          "temperature_sensor": "Room temperature sensor",
+          "ifeel_interval": "I feel send interval (minutes)"
+        }
+      }
+    }
+  },
+  "entity": {
+    "climate": {
+      "lennox_yt1ff": {
+        "state_attributes": {
+          "swing_mode": {
+            "state": {
+              "off": "Louver off",
+              "fixed_up": "Fixed up",
+              "fixed_middle_up": "Fixed middle-up",
+              "fixed_middle": "Fixed middle",
+              "fixed_middle_down": "Fixed middle-down",
+              "fixed_down": "Fixed down",
+              "swing_down": "Swing down",
+              "swing_middle": "Swing middle",
+              "swing_up": "Swing up",
+              "swing_full": "Swing full"
+            }
+          }
+        }
+      }
+    },
+    "switch": {
+      "light": {
+        "name": "Display light"
+      },
+      "health": {
+        "name": "Health"
+      },
+      "xfan": {
+        "name": "X-Fan"
+      },
+      "turbo": {
+        "name": "Turbo"
+      },
+      "ifeel": {
+        "name": "I feel (sensor temperature)"
+      }
+    },
+    "select": {
+      "display": {
+        "name": "Displayed temperature",
+        "state": {
+          "inside": "Indoor",
+          "outside": "Outdoor",
+          "target": "Target",
+          "off": "Off"
+        }
+      }
+    }
+  },
+  "services": {
+    "generate_pronto": {
+      "name": "Generate Pronto code",
+      "description": "Computes the Pronto code for a given state without sending it (returns a response).",
+      "fields": {
+        "power": {
+          "name": "Power",
+          "description": "Power"
+        },
+        "mode": {
+          "name": "Mode",
+          "description": "Mode"
+        },
+        "temperature": {
+          "name": "Temperature",
+          "description": "Temperature"
+        },
+        "fan": {
+          "name": "Fan",
+          "description": "Fan"
+        },
+        "swing": {
+          "name": "Louver",
+          "description": "Louver"
+        },
+        "xfan": {
+          "name": "X-Fan",
+          "description": "X-Fan"
+        },
+        "health": {
+          "name": "Health",
+          "description": "Health"
+        },
+        "light": {
+          "name": "Light",
+          "description": "Light"
+        },
+        "display": {
+          "name": "Display",
+          "description": "Display"
+        },
+        "turbo": {
+          "name": "Turbo",
+          "description": "Turbo"
+        },
+        "ifeel": {
+          "name": "I feel",
+          "description": "I feel"
+        },
+        "ambient_temperature": {
+          "name": "Room temperature (I feel)",
+          "description": "°C"
+        }
+      }
+    },
+    "decode_pronto": {
+      "name": "Decode a Pronto code",
+      "description": "Decodes a YT1FF Pronto code and tells whether the generator reproduces it exactly.",
+      "fields": {
+        "pronto": {
+          "name": "Code Pronto",
+          "description": "Code Pronto (0000 006C …)"
+        }
+      }
+    },
+    "send_pronto": {
+      "name": "Send a Pronto code",
+      "description": "Sends a Pronto code as-is through the configured emitter (diagnostics).",
+      "fields": {
+        "pronto": {
+          "name": "Code Pronto",
+          "description": "Code Pronto (0000 006C …)"
+        }
+      }
+    }
+  }
+}

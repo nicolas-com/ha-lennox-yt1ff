@@ -1,0 +1,13 @@
+{
+  "domain": "lennox_yt1ff",
+  "name": "Lennox YT1FF (Pronto)",
+  "codeowners": ["@nicolas-com"],
+  "config_flow": true,
+  "dependencies": ["infrared"],
+  "documentation": "https://github.com/nicolas-com/ha-lennox-yt1ff",
+  "integration_type": "device",
+  "iot_class": "assumed_state",
+  "issue_tracker": "https://github.com/nicolas-com/ha-lennox-yt1ff/issues",
+  "requirements": [],
+  "version": "0.6.0"
+}
